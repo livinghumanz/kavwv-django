@@ -63,7 +63,7 @@
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <label>Internship Course:</label>
-                    <div class="form-group" style="margin-left: 5%;" >
+                    <div class="form-group" style="margin-left: 5%;" id = "course">
                         <input class="form-check-input" type="radio" name="course" id="cloud" value="cloud" required >
                         <label class="form-check-label" for="attendance">Practicing cloud computing (Azure)</label><br>
                         <input class="form-check-input" type="radio" name="course" id="iot" value="iot" >
@@ -84,6 +84,10 @@
                         <label class="form-check-label" for="attendance">Java from A-Z (noob to pro)</label><br>
                         <input class="form-check-input" type="radio" name="course" id="other" value="other" >
                         <label class="form-check-label" for="attendance">Other in note</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="fee">Cource fee: </label>
+                        <input type="input" name="fee" class="form-control" style="max-width: 20%;" id="fee" placeholder="&#8377; 1500.00" disabled>
                     </div><br>
                     <div class="form-group">
                         <label for="note">Didn't find your match ? <br> Do you like to tell us anything ? <br> Please Drop a not we will get back to you : </label>
@@ -97,3 +101,13 @@
     
 
 {% endblock %}
+
+{% block aditionaljs %}
+    <script>
+        function checkprice(){
+            var form = document.querySelector("input[name=course]:checked").value
+            alert(form)
+            
+        }
+    </script>
+ {% endblock %}
