@@ -1,0 +1,175 @@
+#icon{
+    border-style: none none solid none;
+    border-width: 2px;
+    padding: 0.2%;
+    border-radius: 20%;
+    border-image: linear-gradient(to right,#fca93d,#0275d8,transparent) 1;
+    font-size: xx-large;
+    color: #ffe1b9c9;   
+}
+h4{
+    font-size: 150%;
+    font-family: Copperplate;
+    letter-spacing: 3pt !important;
+    word-spacing: normal;
+    font-style: italic !important;
+}
+.navbar{
+    margin:0%;
+    background-color: rgb(78, 80, 82); 
+    display: block;
+    /*position:static;*/
+    z-index: 1;
+    width:100%;
+    overflow: hidden;
+    border-style: solid none none none;
+    /*border-color:  linear-gradient(to right,#292b2c ,#0275d8 ,#f0ad4e); ;*/
+    border-image: linear-gradient(to right,white,#fca93d,#0275d8,#fca93d,white) 1 !important;
+}
+.Lcade,.Rcade {
+    margin: 50px;
+    color: aliceblue;
+    font-weight: bold;
+    background-color:transparent; 
+    border-color: #0275d8;
+    width: 98%; 
+    margin-left: 1%;
+    opacity: 0;
+    overflow: hidden;
+  }
+.Lcade{
+    text-align: left;
+    border-style:none none none solid !important ;
+}
+.Rcade{
+    text-align: right;
+    border-style:none solid none none !important ;
+}
+blockquote{
+    padding: 1px;
+    width: 97%;
+    border-style: solid;
+    border-image: conic-gradient(transparent 86deg,#0275d8 86deg 88deg,transparent 88deg 92deg,  #fca93d 92deg 94deg,
+        transparent 94deg 266deg, #0275d8 266deg 268deg,transparent 268deg 272deg, #fca93d 272deg 274deg,transparent 274deg) 1;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2pt;
+    word-spacing: 0.3pt;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 100%;
+    border-width: 2px;
+    
+}
+ul{
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+    font-style: oblique;
+    font-size: 110%;
+    font-weight: normal;
+    padding-top: 2%;
+    
+}
+.counter{
+    width: 20%;
+    height:20%;
+    text-align: center;
+    vertical-align: middle;
+    border: solid white 1.5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+    font-size: 120%;
+}
+h6{
+    font-size: 103%;
+    letter-spacing: 1px;
+    font-style: oblique;
+    float: right;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrole_bg::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrole_bg {
+    /*-ms-overflow-style: none;   IE and Edge 
+    scrollbar-width: none;  Firefox */
+    background-color:rgba(25,25,25,1);
+    color: #ddd;
+} 
+
+/*-----------------------------SVG spinner--------------------
+
+#svg-spinner{
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1.5s;
+    -webkit-animation-name: rotate;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    
+    -moz-transition-property: -moz-transform;
+    -moz-animation-name: rotate; 
+    -moz-animation-duration: 1.5s; 
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    
+    transition-property: transform;
+    animation-name: rotate; 
+    animation-duration: 1.5s; 
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  @-webkit-keyframes rotate {
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+  }
+  
+  @-moz-keyframes rotate {
+      from {-moz-transform: rotate(0deg);}
+      to {-moz-transform: rotate(360deg);}
+  }
+  
+  @keyframes rotate {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+  }
+
+-----------------------------SVG spinner--------------------*/
+/*---------------------------Down Arrow------------------------------------------*/
+.section {
+    background: rgba(51, 51, 51, 0);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    
+  }
+  
+  .section::before {
+    animation: bounce 1s ease infinite;
+    bottom: 2rem;
+    color: #fff;
+    content: '╲╱';
+    font-size: 2rem;
+    height: 4rem;
+    left: 50%;
+    letter-spacing: -1px;
+    line-height: 4rem;
+    margin-left: -3rem;
+    opacity: 0.8;
+    position: absolute;
+    text-align: center;
+    width: 6rem;
+    overflow: hidden;
+  }
+  
+  @keyframes bounce {
+    50% {
+      transform: translateY(-50%);
+    }
+  }
