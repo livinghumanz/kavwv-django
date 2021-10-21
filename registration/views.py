@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from registration.models import Coursereg
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, send_mail
 import datetime
 # Create your views here.
 def regStudent(request):
@@ -22,20 +22,31 @@ def regStudent(request):
         ystudy=yos,contact=contact,mailid=mailid,course=course,note=note)
 
         # Send Email
-        email = EmailMessage(
+        #email = EmailMessage(
+        #    subject='KAVWV Internship Registration Confirmation for {0}'.format(name),
+        #    body='''Hello {0}, \n We received your registration for the course with following Details, we will reach you shortly.
+        #    \n name : {0} \n college : {1}\n Year of study : {2} \n course : {3}
+        #    \n Please reply to this mail in case of any Queries\n             
+        #    \nKind Regards,\nKAVWV\ninfo.kavwv@gmail.com  '''.format(
+        #        name,college,yos,course),
+        #    from_email='info.kavwv@gmail.com',
+        #    to=[mailid],
+        #    bcc=['rameshsharma261098@gmail.com'],
+        #    reply_to=['info.kavwv@gmail.com'],
+        #    headers={'Message-ID': 'Kavwv internship challenge'},
+        #)
+        #email.send(fail_silently=False )
+        send_mail(
             subject='KAVWV Internship Registration Confirmation for {0}'.format(name),
-            body='''Hello {0}, \n We received your registration for the course with following Details, we will reach you shortly.
-            \n name : {0} \n college : {1}\n Year of study : {2} \n course : {3}
-            \n Please reply to this mail in case of any Queries\n             
-            \nKind Regards,\nKAVWV\ninfo.kavwv@gmail.com  '''.format(
+            message='''Hello {0}, \n We received your registration for the course with following Details, we will reach you shortly.
+                \n name : {0} \n college : {1}\n Year of study : {2} \n course : {3}
+                \n Please reply to this mail in case of any Queries\n             
+                \nKind Regards,\nKAVWV\ninfo.kavwv@gmail.com  '''.format(
                 name,college,yos,course),
             from_email='info.kavwv@gmail.com',
-            to=[mailid],
-            bcc=['rameshsharma261098@gmail.com'],
-            reply_to=['info.kavwv@gmail.com'],
-            headers={'Message-ID': 'Kavwv internship challenge'},
+            recipient_list=[mailid,'rameshsharma261098@gmail.com'],
+            fail_silently=False
         )
-        email.send(fail_silently=False )
         
         return render(request,'register/index.html',{'result':'1','name':name,})
     return render(request,'register/index.html')
