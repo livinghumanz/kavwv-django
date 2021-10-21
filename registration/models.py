@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Coursereg(models.Model):
-    dateadded = models.DateTimeField(auto_now_add=True)
+    dateadded = models.DateTimeField()
     name = models.CharField(max_length=100)
     dob = models.DateField()
     college = models.TextField()
@@ -15,4 +15,4 @@ class Coursereg(models.Model):
     
     
     def __str__(self):
-        return '{0} from {1}'.format(self.name,self.college)
+        return '{0} from {1} at {2}'.format(self.name,self.college,self.dateadded)
