@@ -7,18 +7,15 @@ from django.views.decorators.cache import cache_control
 
 # Create your views here.
 
-class globvar:
-    cid="errorval"
 
 def homeIndex(request):
     return render(request,'home/index.html')
-ob:object
+
 def challenge(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         f_data=request.POST
         cid = f_data['cid']
-        globvar.cid=cid
         ob=Coursereg.objects.all().filter(sid__iexact= cid)
         #globvar.ob=ob
         if ob.exists():
@@ -27,7 +24,7 @@ def challenge(request):
             #print(type(data))
             if ob[0].chscore <0 :
                 messages.success(request,'Successfully validated, please proceed with your test ! ')
-                return render(request,'home/challengeAct.html',{'flag':True,'data':zip(list(data.values()),list(data.keys()),[1,2,3,4,5,6,7,8,9,10])})
+                return render(request,'home/challengeAct.html',{'flag':True,'data':zip(list(data.values()),list(data.keys()),[1,2,3,4,5,6,7,8,9,10]),"cid":cid})
             elif ob[0].chscore >-1 and ob[0].handson <0:
                 messages.success(request,'Successfully validated, please complete your handson ! ')
                 return render(request,'home/challengeAct.html')
@@ -49,18 +46,22 @@ def chalval(request):
         f_data=request.POST
         with open('home/djangokey.json') as json_file:
                 dsol = json.load(json_file)
+        cid = f_data["cid"]
+        print(f_data)
         for i in range(1,11):
             if f_data[str(i)] == dsol[str(i)]:
                 total+=2
         ob=Coursereg.objects.all()
-        if ob.filter(sid__iexact= globvar.cid).exists():
-            o1=ob.get(sid__iexact= globvar.cid)
+        if ob.filter(sid__iexact= cid).exists():
+            o1=ob.get(sid__iexact= cid)
             o1.chscore = total
             o1.save()
-            globvar.cid = None
+            cid = None
+            print(cid)
             return render(request,'home/challengeAct.html',{'flag':False})
         else:
             messages.error(request,"you have reloaded the page/ connection timeout")
             return redirect('challenge')
+        #return render(request,'home/challengeAct.html',{'flag':False})
     
     return redirect('challenge')

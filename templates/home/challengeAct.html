@@ -25,7 +25,7 @@
                 <h4> Welcome to KAVWV Certification challenge. <i style="color: red;">(MCQ 20 marks)</i></h4>
                 <form action="{% url 'chalval' %}" enctype="multipart/form-data" method="POST" class="regform">
                     {% csrf_token %}
-
+                    
                     {% for solution,question,n in  data %}
                         <label> {{ n }}. {{ question }} </label>
                         <div class="form-group" style="margin-left: 2%;" id = "{{ n }}">
@@ -38,6 +38,11 @@
                             
                         </div>   
                     {% endfor %}
+                    <div class="form-group" style="margin-left: 2%; display: none;" id = "cid" >
+                        <input class="form-check-input" type="radio" name="cid" id="cid" value="{{ cid }}" required  checked>
+                        <label class="form-check-label" for="cid">{{ cid }}</label><br>
+                        
+                    </div> 
 
                     <center><button type="submit" class="btn btn-primary">Submit</button></center>
                 </form>
