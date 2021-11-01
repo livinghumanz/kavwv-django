@@ -41,7 +41,7 @@ def challenge(request):
         #return HttpResponse(len(ob))
     return render(request,'home/challenge.html')
 
-@cache_control(no_cache=True, must_revalidate=True)
+
 def chalval(request):
     if request.method == 'POST':
         total = 0
