@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}
+
+    <style>
+        .scrole_bg{
+            background-color: white;
+        }
+    </style>
+{% if not flag %}
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="{% static 'css/successpage.css' %}">
+{% endif %}
+
+{% endblock %}
+
+{% block content %} 
+<!-- Alerts -->
+    {% include 'partials/_alerts.html' %} 
+
+    {% if flag %}
+    <div class="container-fluid" style="color: black;">
+        <div class="row">
+            <div class="col" id="admission" style="padding: 3%;">
+                <h4> Welcome to KAVWV Certification challenge. <i style="color: red;">(MCQ 20 marks)</i></h4>
+                <form action="{% url 'chalval' %}" enctype="multipart/form-data" method="POST" class="regform">
+                    {% csrf_token %}
+
+                    {% for solution,question,n in  data %}
+                        <label> {{ n }}. {{ question }} </label>
+                        <div class="form-group" style="margin-left: 2%;" id = "{{ n }}">
+                            <input class="form-check-input" type="radio" name="{{ n }}" id="{{ n }}" value="a" required >
+                            <label class="form-check-label" for="attendance">{{ solution.a }}</label><br>
+                            <input class="form-check-input" type="radio" name="{{ n }}" id="{{ n }}" value="b" >
+                            <label class="form-check-label" for="attendance">{{ solution.b }}</label><br>
+                            <input class="form-check-input" type="radio" name="{{ n }}" id="{{ n }}" value="c" >
+                            <label class="form-check-label" for="attendance">{{ solution.c }}</label><br>
+                            
+                        </div>   
+                    {% endfor %}
+
+                    <center><button type="submit" class="btn btn-primary">Submit</button></center>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    {% else %}
+    <center>
+    <div class="card" style="max-width: 98%;">
+        
+        <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
+            {% if chscore %}
+                <i style="font-size: 50px;">{{ chscore }}%</i>
+            {% else %}
+                <i class="checkmark">✓</i>
+            {% endif %}
+        </div>
+        <h1>Success </h1> 
+        <p style="text-align: justify;">
+            {% if chscore  %}
+            Congratulation on taking your Exam, we are proud of you that you have made till the end. <br> <b style="color: #9ABC66;">Score: {{chscore}}% </b>, you will receive your certification shortly !
+            {% else %}
+                While we process your result please proceed with the Handson. Follow the github link for your challenge:
+                <a href="https://github.com/livinghumanz/KAVWV_internship_challenge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                    </svg> https://github.com/livinghumanz/KAVWV_internship_challenge</a>  Create a new repository named <b>(KAVWV_internship_challenge)</b> and upload your work, Mail us at <a href="info.kavwv@gmail.com">info.kavwv@gmail.com</a> with a video link of explation and demo run of your code along with your github repository link.
+                you can find more information about the challenge in <a href="https://github.com/livinghumanz/KAVWV_internship_challenge#readme">Readme</a> section.
+             {% endif %}
+        </p>
+    </div>
+    </center>
+    {% endif %}
+    
+
+
+{% endblock %}

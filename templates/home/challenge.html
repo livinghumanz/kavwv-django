@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block link %}  
+<style>
+    .scrole_bg{
+        background-color: white;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %} 
+<!-- Alerts -->
+{% include 'partials/_alerts.html' %} 
+
+<div class="regform text-center" style="padding: 2%; color: black; background-color: white; width: 90%;">
+
+    <h4> Welcome to KAVWV Certification challenge.</h4>
+    <p style="text-align: justify;"> It's great to see that you have completed your training and have reached here to get certified. Validate your ID provided by instructer and proceed for the Assesment by clicking <a href="#" onclick="loginpop()" >here</a>. This assisment can only be taken once and on submition you can't revert the changes. <b><i>Feel free to mail us in case of any Queries</i></b>. 
+    </p>
+    
+    <h4 style="padding: 2%;"> Pattern of Certification:</h4>
+    <ol type="1" style="text-align: justify; margin-left:1%;">
+        <li>Ten MCQ type Questions <b><i>(20 ponts)</i></b></li>
+        <li>Hands on Task on Trained Technology <b><i>(70 points)</i></b></li>
+        <li>Total points that can be scored = 100, point allocation for MCQ is not constant for all Questions</li>
+        <li>Instructor can provide a max of <b><i>10 point</i></b> </li>
+        <li>On score above 70% you get digitially verifiable certificate from KAVWV</li>
+        <li>K factor calculation will be done as per KAVWV's calculation index</li>
+    </ol>
+    
+</div>
+
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="false" style="color: black;">    
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">    
+            <div class="modal-header border-bottom-0">
+                <h4 class="text-center"> Validate your certification ID </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-title text-center">
+                <h4>C-ID</h4>
+                </div>
+                <div class="d-flex flex-column text-center">
+                    <form action="{% url 'challenge' %}" enctype="multipart/form-data" method="POST">
+                        {% csrf_token %} 
+                        <div class="form-group">
+                            <input type="text" class="form-control" name = "cid" id="cid" placeholder="ID given by Instructor" required>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-block btn-round">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block aditionaljs %} 
+<script>
+    function loginpop(){
+        $('#loginModal').modal('show');
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    }
+</script>
+{% endblock %}

@@ -12,6 +12,10 @@ class Coursereg(models.Model):
     mailid = models.EmailField(max_length=200)
     course = models.TextField()
     note = models.TextField()
+    sid = models.CharField(max_length=100,null=True,unique=True)
+    chscore = models.IntegerField(default=-1)
+    handson = models.IntegerField(default=-1)
+    projrepo = models.TextField(null=True)
     
     
     def __str__(self):
