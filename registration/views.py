@@ -3,6 +3,7 @@ from django.shortcuts import render
 from registration.models import Coursereg
 from django.core.mail import EmailMessage, send_mail
 import datetime
+import smtplib
 # Create your views here.
 def regStudent(request):
     if request.method == 'POST':
