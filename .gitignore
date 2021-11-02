@@ -10,3 +10,4 @@ venv
 .vscode
 djangoqtn.json
 djangokey.json
+sendmail.py
