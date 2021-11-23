@@ -31,7 +31,7 @@
   color: black;
   display: table;
   font-family: Georgia, serif;
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
 }
 .container {
@@ -54,7 +54,7 @@
 
 .marquee {
   color: rgb(153, 119, 75);
-  font-size: 40px;
+  font-size: 38px;
   margin: 20px;
 }
 .assignment,.reason {
@@ -63,7 +63,7 @@
 .person {
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  font-size: 22px;
+  font-size: 20px;
   font-style: italic;
   margin: 10px auto;
   width: 300px;
