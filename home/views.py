@@ -6,7 +6,18 @@ import json
 from django.views.decorators.cache import cache_control
 
 # Create your views here.
-
+course={
+    "cloud":"Practicing cloud computing (Azure)",
+    "iot":"Internet of Things (IoT)",
+    "uiux":"UI/UX Web-Dev (CSS, JS, Bootstrap)",
+    "dbms":"Database Management with postgresql",
+    "flask":"Dynamic Web-Dev with Flask",
+    "django":"Dynamic Web-Dev with Django",
+    "ml":"Machine Learning for Data Analysis",
+    "cv":"Image Processing/ Computer vision",
+    "python":"Python for AI (Advanced)",
+    "java":"Java from A-Z (noob to pro)"
+}
 
 def homeIndex(request):
     return render(request,'home/index.html')
@@ -30,7 +41,9 @@ def challenge(request):
                 return render(request,'home/challengeAct.html')
             else :
                 messages.success(request,'Successfully validated')
-                return render(request,'home/challengeAct.html',{'chscore':(ob[0].chscore + ob[0].handson +10 )})
+                return render(request,'home/challengeAct.html',
+                {'chscore':(ob[0].chscore + ob[0].handson +10 ),'sname':ob[0].name.upper(),'scollege':ob[0].college.upper(),
+                'cstart':ob[0].cstart,'cend':ob[0].cend,'vcode':ob[0].sid,'repo':ob[0].projrepo,'course':course[ob[0].course]})
 
         else:
             messages.error(request,'Wrong Certification ID please reach your instructor !')

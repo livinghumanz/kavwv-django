@@ -12,6 +12,8 @@ class Coursereg(models.Model):
     mailid = models.EmailField(max_length=200)
     course = models.TextField()
     note = models.TextField()
+    cstart = models.DateField(null=True)
+    cend = models.DateField(null=True)
     sid = models.CharField(max_length=100,null=True,unique=True)
     chscore = models.IntegerField(default=-1)
     handson = models.IntegerField(default=-1)

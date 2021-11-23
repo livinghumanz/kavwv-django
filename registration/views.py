@@ -5,6 +5,20 @@ from django.core.mail import EmailMessage, send_mail
 import datetime
 import smtplib
 # Create your views here.
+
+courses={
+    "cloud":"Practicing cloud computing (Azure)",
+    "iot":"Internet of Things (IoT)",
+    "uiux":"UI/UX Web-Dev (CSS, JS, Bootstrap)",
+    "dbms":"Database Management with postgresql",
+    "flask":"Dynamic Web-Dev with Flask",
+    "django":"Dynamic Web-Dev with Django",
+    "ml":"Machine Learning for Data Analysis",
+    "cv":"Image Processing/ Computer vision",
+    "python":"Python for AI (Advanced)",
+    "java":"Java from A-Z (noob to pro)"
+}
+
 def regStudent(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -30,7 +44,7 @@ def regStudent(request):
             \n name : {0} \n college : {1}\n Year of study : {2} \n course : {3}
             \n Please reply to this mail in case of any Queries\n             
             \nKind Regards,\nKAVWV\ninfo.kavwv@gmail.com  '''.format(
-                name,college,yos,course),
+                name,college,yos,courses[course]),
             from_email='info.kavwv@gmail.com',
             to=[mailid],
             bcc=['rameshsharma261098@gmail.com'],
