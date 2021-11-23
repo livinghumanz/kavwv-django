@@ -61,7 +61,8 @@
   margin: 10px;
 }
 .person {
-  border-bottom: 2px solid black;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
   font-size: 22px;
   font-style: italic;
   margin: 10px auto;
