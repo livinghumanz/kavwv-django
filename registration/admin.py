@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Coursereg
+from .models import Coursereg, Selfupload
 # Register your models here.
-admin.site.register(Coursereg)
+admin.site.register([Coursereg,Selfupload])
