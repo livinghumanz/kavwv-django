@@ -1,4 +1,5 @@
 from django.http.response import HttpResponse
+from django.utils import timezone
 from django.shortcuts import render
 from registration.models import Coursereg
 from django.core.mail import EmailMessage, send_mail
@@ -16,7 +17,8 @@ courses={
     "ml":"Machine Learning for Data Analysis",
     "cv":"Image Processing/ Computer vision",
     "python":"Python for AI (Advanced)",
-    "java":"Java from A-Z (noob to pro)"
+    "java":"Java from A-Z (noob to pro)",
+    "other":"others"
 }
 
 def regStudent(request):
@@ -32,7 +34,7 @@ def regStudent(request):
         mailid = f_data['admit-mail']
         course = f_data['course']
         note = f_data['note']
-        dateadded = datetime.datetime.now()
+        dateadded = datetime.datetime.now(tz=timezone.utc)+datetime.timedelta(hours=5,minutes=30)
         #print(name,dob,college,dep,yos,contact,mailid,course,note)
         Coursereg.objects.create(dateadded = dateadded,name=name,dob=dob,college=college,dep=dep,
         ystudy=yos,contact=contact,mailid=mailid,course=course,note=note)

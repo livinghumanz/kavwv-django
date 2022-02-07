@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date,datetime
 
 # Create your models here.
 class Coursereg(models.Model):
@@ -22,3 +23,8 @@ class Coursereg(models.Model):
     
     def __str__(self):
         return '{0} from {1} at {2}'.format(self.name,self.college,self.dateadded)
+
+class Selfupload(models.Model):
+    dateadded = models.DateField(auto_now_add=True)
+    mtype = models.CharField(max_length=20)
+    fdata = models.FileField(upload_to='selfupload/content/%y/%m/%d/')
